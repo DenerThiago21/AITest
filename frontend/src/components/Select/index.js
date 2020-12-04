@@ -4,9 +4,13 @@ class Select extends Component {
     constructor() {
         super();
         this.onChange = this.onChangeValue.bind(this);
+        this.state = {
+            id: 0,
+        }
     }
 
     onChangeValue(event) {
+        this.setState({id: event.target.value});
         console.log(event.target.value);
     }
 
