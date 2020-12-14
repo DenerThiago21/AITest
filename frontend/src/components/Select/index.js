@@ -21,7 +21,7 @@ class Select extends Component {
      * </select>
      */
     renderOptions() {
-        const { values } = this.props;
+        const { values } = this.props.values;
         console.log(values);
 
         return (
@@ -35,7 +35,7 @@ class Select extends Component {
     
     render() {
         return (
-            <div>
+            <div className="Select">
                 <select onChange={this.onChangeValue}>
                     {this.renderOptions()};
                 </select>

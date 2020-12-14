@@ -18,7 +18,7 @@ class AtletaController {
     /**Função para buscar todos os atletas na base (SELECT * FROM tb_atletas) */
     listarTodosAtletas(request, response) {
         database.select('*').table('tb_atleta').then(atletas=>{
-            console.log(atletas);
+            //console.log(atletas);
             response.json(atletas);
         }).catch(err=>{
             console.log(err);

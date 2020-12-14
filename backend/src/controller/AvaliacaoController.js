@@ -1,4 +1,5 @@
 const database = require('../database/connection');
+const {format} = require('date-fns');
 
 class AvaliacaoController {
 
@@ -8,12 +9,14 @@ class AvaliacaoController {
         const atlID = request.params.atletaID;
         const protID = request.params.protocoloID;
 
-        database.select('avaliacaoID', 'dataAvaliacao', 'valores')
+        database.select('avaliacaoID', 'dataAvaliacao', 'valores', 'score')
                 .table('tb_avaliacao')
                 .where({atletaID: atlID, protocoloID: protID})
                 .then(avaliacaoProtocoloAtleta => {
-                    const arr = avaliacaoProtocoloAtleta;
-                    console.log(arr);
+                    for(let i in avaliacaoProtocoloAtleta){
+                        avaliacaoProtocoloAtleta[i].dataAvaliacao = format(avaliacaoProtocoloAtleta[i].dataAvaliacao, 'dd/MM/yyyy') ;
+                    }
+                    console.log(avaliacaoProtocoloAtleta);
                     response.json(avaliacaoProtocoloAtleta);
                 }).catch(err => {
                     console.log(err);

@@ -1,25 +1,38 @@
 import React, {Component} from 'react';
 import api from '../../services/api';
 
+//import WellsChart from '../../components/WellsChart';
 
-let atletaID = 0;
-let protocoloID = 0;
+import Chart from '../../components/Chart';
+import './styles.css';
+
+
+let gAtletaID = '1';
+let gProtocoloID = '1';
 
 class Evolution extends Component {
     constructor() {
         super();
-        this.handleSubmint = this.handleSubmint.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.state = {
             atletas: [],
             protocolos: [],
-            values: '',
-            //atletaID: '',
-            //protocoloID: 0,
+            grafico: false,
+            atletaID: gAtletaID,
+            protocoloID: gProtocoloID,
+            data: [],
         };
     };
 
-    handleSubmint(event){
-        alert('Alteta ID '+atletaID+ ' Protocolo ID '+protocoloID);
+    handleSubmit(event){
+        //alert('Alteta ID '+atletaID+ ' Protocolo ID '+protocoloID);
+
+        this.setState({
+            atletaID: gAtletaID,
+            protocoloID: gProtocoloID,
+            grafico: true
+        });
+        this.loadQuery()
     }
 
     componentDidMount() {
@@ -41,9 +54,18 @@ class Evolution extends Component {
         this.setState({protocolos: response.data});
     }
 
+    /**Método para carregar os dados do atleta para geração do gráfico */
+    loadQuery = async () => {
+        const response = await api.get(`/avaliacao/individual/${gAtletaID}/${gProtocoloID}`);
+
+        console.log('a '+ this.state.atletaID+' p '+this.state.protocoloID );
+        //console.log(response);
+        this.setState({data: response.data});
+    }
+
     /**metodos para o Select de Atleta */
     onChangeSelectAtletaValue(event){
-        atletaID = event.target.value;
+        gAtletaID = event.target.value;
         //console.log(atletaID);
     }
 
@@ -63,7 +85,7 @@ class Evolution extends Component {
 
     /**Métodos para o Select de protocolos */
     onChangeSelectProtocoloValue(event) {
-        protocoloID = event.target.value;
+        gProtocoloID = event.target.value;
         //console.log(event.target.value);
     }
 
@@ -81,25 +103,32 @@ class Evolution extends Component {
         );
     }
 
-
+    
     /**Método para renderizar a página propriamente dita */
     render() {
         return (
-            <form onSubmit={this.handleSubmint}>
+            <div className="div-geral">
                 <div className="evolucao-atleta">
-                    <div className="SelectAtleta">
+                    <div id="select-atleta">
+                        <p> Selecione o Atleta</p>
                         <select onChange={this.onChangeSelectAtletaValue}>
                             {this.renderAtletaOptions()}
                         </select>
                     </div>
-                    <div className="SelectProtocolos">
+                    <div id="select-protocolo">
+                        <p>Selecione o Protocolo de Teste</p>
                         <select onChange={this.onChangeSelectProtocoloValue}>
                             {this.renderProtocoloOptions()}
                         </select>
                     </div>
+                    <div id="button-gerar">
+                        <button id="gerar" onClick={this.handleSubmit}>Gerar Gráfico</button>
+                    </div>
+                    <div className="mostrar-grafico">
+                        {this.state.grafico && <Chart values={this.state.data} protocolo={this.state.protocoloID}  />}
+                    </div>
                 </div>
-                <button type="Submit">enviar</button>
-            </form>            
+            </div>    
         );
     };
 }
