@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import { BarChart, Bar, XAxis, YAxis, Legend, Cell, LabelList } from 'recharts';
 
-class WellsChart extends Component {
-
+class CegonhaChart extends Component {
     mostraValores(data) {
 
         const { valores } = data;
@@ -50,7 +49,7 @@ class WellsChart extends Component {
         return (
             <BarChart width={1000} height={400} data={data} margin={{top: 20, right: 5, left: 20, bottom: 5 }}>
                 <XAxis height={100} dataKey="dataAvaliacao"  angle={-45} textAnchor="end" />
-                <YAxis label="cm" type="number" domain={[0, 'dataMax + 10']}/>
+                <YAxis label={{ value: 'segundos', angle: -90, position: 'left' }} type="number" domain={[0, 'dataMax + 10']}/>
                 <Legend layout="vertical" verticalAlign="top" align="right" margin={{right: 30}}
                     payload={
                         [
@@ -76,19 +75,11 @@ class WellsChart extends Component {
 
     render() {
         return (
-            <div className="wellsChart">
-                 {this.geraGrafico()}
+            <div className="CegonhaChart">
+                {this.geraGrafico()}
             </div>
         );
     }
 }
 
-export default WellsChart;
-
-/**
- * #d41002 - red
- * #d48402 - orange
- * #d4bb02 - yellow
- * #089c19 - green
- * #3944bc - blue
- */
+export default CegonhaChart;

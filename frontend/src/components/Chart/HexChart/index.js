@@ -1,19 +1,77 @@
 import React, { Component } from 'react';
 
-import './styles.css';
+import { BarChart, Bar, XAxis, YAxis, Legend, Cell, LabelList } from 'recharts';
 
 class HexChart extends Component {
 
+    mostraValores(data) {
+
+        const { valores } = data;
+        const radius = 10;
+
+        return (
+            <g>
+                <text fill="#fff" textAnchor="middle" dominantBaseline="middle">
+                    {valores}
+                </text>
+            </g>
+        );
+    };
+
+    geraBarra(score) {
+        if(score === 1) {
+            return "#d41002";
+        } else if (score === 2) {
+            return "#d48402";
+        } else if (score === 3) {
+            return "#d4bb02";
+        } else if (score === 4) {
+            return "#089c19";
+        }
+        return "#3944bc";
+    }
+
     geraGrafico() {
-        console.log(this.props.values);
-        let val = 'Hex';
+        let values = this.props.values;
+        console.log(values);
         if(this.props.values.length < 1) {
             return (
-                <h2 id="msg-sem-grafico">não há gráficos para esta consulta</h2>
+                <h2 id="msg-sem-grafico">Não há gáficos para esta consulta</h2>
             );
+        } 
+        let data = [];
+        for(let i in values) {
+            data[i] = {
+                "avaliacaoID": values[i].avaliacaoID, 
+                "dataAvaliacao": values[i].dataAvaliacao,
+                "valores" : values[i].valores,
+                "score": values[i].score,
+            }
         }
         return (
-            <h2>aoba {val}</h2>
+            <BarChart width={1000} height={400} data={data} margin={{top: 20, right: 5, left: 20, bottom: 5 }}>
+                <XAxis height={100} dataKey="dataAvaliacao"  angle={-45} textAnchor="end" />
+                <YAxis label={{ value: 'segundos', angle: -90, position: 'left' }} type="number" domain={[0, 'dataMax + 20']}/>
+                <Legend layout="vertical" verticalAlign="top" align="right" margin={{right: 30}}
+                    payload={
+                        [
+                            { id: 'ruim',        value: 'Ruim',            type: 'circle', color: '#d41002'},
+                            { id: 'abaixoMedia', value: 'Abaixo da Média', type: 'circle', color: '#d48402'},
+                            { id: 'media',       value: 'Média',           type: 'circle', color: '#d4bb02'},
+                            { id: 'acimaMedia',  value: 'Acima da Média',  type: 'circle', color: '#089c19'},
+                            { id: 'Excelente',   value: 'Excelente',       type: 'circle', color: '#3944bc'},
+                        ]
+                    }
+                />
+                <Bar dataKey="valores"  label={{ position: 'top' }}>
+                    <LabelList position="top"/>
+                    {
+                        data.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={this.geraBarra(data[index].score)} strokeWidth={index === 2 ? 4 : 1}  Label datakey={data[index].valores} />
+                        ))
+                    }
+                </Bar>
+            </BarChart>
         );
     }
 

@@ -1,61 +1,14 @@
-* {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 14px;
-}
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
 
-div.evolucao-atleta {
-    max-width: 1080px;
-    height: 530px;
-    max-height: 530px;
-    margin-top: 50px;
-    margin-right: 80px;
-    margin-left: 190px;
-    margin-bottom: 40px;
-    /*border: 1px solid black;*/
-    background-color: #E6DEDC;
-}
-
-div#select-atleta {
-    margin-top: 20px;
-    margin-left: 150px;
-    float:left;
-
-}
-
-div#select-protocolo {
-    margin-top: 20px;
-    margin-left: 60px;
-    float: left;
-}
-
-div#button-gerar {
-    margin-top: 35px;
-    margin-left: 60px;
-    float: left;
-    
-}
-
-div.mostrar-grafico {
-    max-width: 720px;
-    height: 500px;
-    margin-top: 40px;
-    margin-left: 120px;
-    float:left;
-}
-
-p {
-    font-style: oblique;
-}
-
-select {
-    width: 250px;
-    height: 34px;
-    border-radius: 10px;
-}
-
-button {
-    width: 150px;
-    height: 34px;
-    border-radius: 10px;
-}
-/*background color #b4b4b4*/
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }

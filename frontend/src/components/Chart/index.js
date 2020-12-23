@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 
 import WellsChart from './WellsChart';
 import HexChart from './HexChart';
+import CegonhaChart from './CegonhaChart';
+import RullerChart from './RullerChart';
+import LegerChart from './LegerChart';
+import AbsChart from './AbsChart';
+import HorizontalChart from './HorizontalChart';
+import FsktChart from './FsktChart';
 
 class Chart extends Component {
     
@@ -23,21 +29,27 @@ class Chart extends Component {
                 break;
             } case '3': {
                 console.log('cegonha');
+                render = <CegonhaChart values={values} />
                 break;
             } case '4': {
                 console.log('Ruler');
+                render = <RullerChart values={values} />
                 break;
             } case '5': {
                 console.log('Legér');
+                render = <LegerChart values={values} />
                 break;
             } case '6': {
                 console.log('Abdominal');
+                render = <AbsChart values={values} />
                 break;
             } case '7': {
                 console.log('salto horizontal');
+                render = <HorizontalChart values={values} />
                 break;
             } case '8': {
                 console.log('FSKT');
+                render = <FsktChart values={values} />
                 break;
             } default: {
                 console.log('sem entrada');
