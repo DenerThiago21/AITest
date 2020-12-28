@@ -6,8 +6,6 @@ import api from '../../services/api';
 import Chart from '../../components/Chart';
 import './styles.css';
 
-import Button from '@material-ui/core/Button';
-
 let gAtletaID = '1';
 let gProtocoloID = '1';
 
@@ -108,28 +106,30 @@ class Evolution extends Component {
     /**Método para renderizar a página propriamente dita */
     render() {
         return (
-            <div className="div-geral">
-                <div className="evolucao-atleta">
-                    <div id="select-atleta">
-                        <p> Selecione o Atleta</p>
-                        <select onChange={this.onChangeSelectAtletaValue}>
+
+            <div role="main" className="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
+                    <h2 className="h2">Gráfico de Evolução Individual de Atleta</h2>
+                </div>
+                <div className="d-flex row justify-content-around flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-2 mb-md-0">
+                    <div className="col">
+                        <label for="select-atletas">Selecione o Atleta</label>
+                        <select className="form-control"  id="select-atleta" onChange={this.onChangeSelectAtletaValue}>
                             {this.renderAtletaOptions()}
                         </select>
                     </div>
-                    <div id="select-protocolo">
-                        <p>Selecione o Protocolo de Teste</p>
-                        <select onChange={this.onChangeSelectProtocoloValue}>
+                    <div className="col">
+                        <label for="select-protocolos">Selecione o Teste</label>
+                        <select className="form-control" id="select-protocolos" onChange={this.onChangeSelectProtocoloValue}>
                             {this.renderProtocoloOptions()}
-                        </select>
+                        </select>    
                     </div>
-                    <div id="button-gerar">
-                        <button id="gerar" onClick={this.handleSubmit}>Gerar Gráfico</button>
-                    </div>
-                    <div className="mostrar-grafico">
-                        {this.state.grafico && <Chart values={this.state.data} protocolo={this.state.protocoloID}  />}
+                    <div className="col">
+                        <button type="button" className="btn btn-primary w-75 p-2 mt-4" id="gerar" onClick={this.handleSubmit}>Gerar Gráfico</button>
                     </div>
                 </div>
-            </div>    
+                {this.state.grafico && <Chart className="my-4 w-100" values={this.state.data} protocolo={this.state.protocoloID}  />}
+            </div>
         );
     };
 }

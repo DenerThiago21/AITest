@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 
 import Evolution from './pages/Evolution';
-import Evolution2 from './pages/Evolution2';
+import Sidebar from './components/Sidebar';
+import Navbar from './components/Navbar';
 
 import './styles.css';
 
 function App() {
   return (
     <div className="App">
-      <Evolution2 />
+      <Navbar />
+      <Sidebar />
+      <Evolution />
     </div>
   );
 }

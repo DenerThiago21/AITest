@@ -6,10 +6,12 @@ import api from '../../services/api';
 import Chart from '../../components/Chart';
 import './styles.css';
 
+import Button from '@material-ui/core/Button';
+
 let gAtletaID = '1';
 let gProtocoloID = '1';
 
-class Evolution2 extends Component {
+class Evolution extends Component {
     constructor() {
         super();
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -106,34 +108,30 @@ class Evolution2 extends Component {
     /**Método para renderizar a página propriamente dita */
     render() {
         return (
-
-            <div role="main" className="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-                <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
-                    <h2 className="h2">Gráfico de Evolução Individual de Atleta</h2>
-                </div>
-                <div className="d-flex row justify-content-around flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-2">
-                    <div className="col">
-                        <label for="select-atletas">Selecione o Atleta</label>
-                        <select className="form-control"  id="select-atleta" onChange={this.onChangeSelectAtletaValue}>
+            <div className="div-geral">
+                <div className="evolucao-atleta">
+                    <div id="select-atleta">
+                        <p> Selecione o Atleta</p>
+                        <select onChange={this.onChangeSelectAtletaValue}>
                             {this.renderAtletaOptions()}
                         </select>
                     </div>
-                    <div className="col">
-                        <label for="select-protocolos">Selecione o Protocolo de Teste</label>
-                        <select className="form-control" id="select-protocolos" onChange={this.onChangeSelectProtocoloValue}>
+                    <div id="select-protocolo">
+                        <p>Selecione o Protocolo de Teste</p>
+                        <select onChange={this.onChangeSelectProtocoloValue}>
                             {this.renderProtocoloOptions()}
-                        </select>    
+                        </select>
                     </div>
-                    <div className="col">
-                        <button className="btn btn-primary w-75 p-3" id="gerar" onClick={this.handleSubmit}>Gerar Gráfico</button>
+                    <div id="button-gerar">
+                        <button id="gerar" onClick={this.handleSubmit}>Gerar Gráfico</button>
+                    </div>
+                    <div className="mostrar-grafico">
+                        {this.state.grafico && <Chart values={this.state.data} protocolo={this.state.protocoloID}  />}
                     </div>
                 </div>
-                <div className="d-flex row justify-content-around flex-wrap flex-md-nowrap align-items-center pt-3 pb-4 mb-3 ">
-                    {this.state.grafico && <Chart values={this.state.data} protocolo={this.state.protocoloID}  />}
-                </div>
-            </div>
+            </div>    
         );
     };
 }
 
-export default Evolution2;
+export default Evolution;

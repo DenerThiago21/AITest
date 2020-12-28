@@ -49,8 +49,8 @@ class HexChart extends Component {
             }
         }
         return (
-            <BarChart width={1000} height={400} data={data} margin={{top: 20, right: 5, left: 20, bottom: 5 }}>
-                <XAxis height={100} dataKey="dataAvaliacao"  angle={-45} textAnchor="end" />
+            <BarChart width={900} height={380} data={data} margin={{top: 20, right: 5, left: 20, bottom: 5 }}>
+                <XAxis height={68} dataKey="dataAvaliacao"  angle={-45} textAnchor="end" />
                 <YAxis label={{ value: 'segundos', angle: -90, position: 'left' }} type="number" domain={[0, 'dataMax + 20']}/>
                 <Legend layout="vertical" verticalAlign="top" align="right" margin={{right: 30}}
                     payload={
