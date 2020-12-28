@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import './styles.css';
 
 class Sidebar extends Component {
@@ -9,10 +10,10 @@ class Sidebar extends Component {
                 <div className="sidebar-sticky pt-3">
                     <ul className="nav flex-column">
                         <li className="nav-item">
-                            <a className="nav-link pt-5" href="#">
+                            <Link className="nav-link pt-5" to="/home">
                                 <span data-feather="home"></span>
                                 Home <span class="sr-only">(current)</span>
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item pt-5">
                             <a className="nav-link" href="#">
@@ -21,10 +22,10 @@ class Sidebar extends Component {
                             </a>
                         </li>
                         <li className="nav-item pt-5">
-                            <a className="nav-link" href="#">
+                            <Link className="nav-link" to="/evolution">
                                 <span data-feather="shopping-cart"></span>
                                 Desempenho
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item pt-5">
                             <a className="nav-link" href="#">

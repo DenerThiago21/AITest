@@ -4,6 +4,9 @@ import api from '../../services/api';
 //import WellsChart from '../../components/WellsChart';
 
 import Chart from '../../components/Chart';
+import Navbar from '../../components/Navbar';
+import Sidebar from '../../components/Sidebar';
+
 import './styles.css';
 
 let gAtletaID = '1';
@@ -106,30 +109,34 @@ class Evolution extends Component {
     /**Método para renderizar a página propriamente dita */
     render() {
         return (
-
-            <div role="main" className="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-                <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
-                    <h2 className="h2">Gráfico de Evolução Individual de Atleta</h2>
+            <div className='evo'>
+                <Navbar />
+                <Sidebar />
+                <div role="main" className="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                    <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
+                        <h2 className="h2">Gráfico de Evolução Individual de Atleta</h2>
+                    </div>
+                    <div className="d-flex row justify-content-around flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-2 mb-md-0">
+                        <div className="col">
+                            <label for="select-atletas">Selecione o Atleta</label>
+                            <select className="form-control"  id="select-atleta" onChange={this.onChangeSelectAtletaValue}>
+                                {this.renderAtletaOptions()}
+                            </select>
+                        </div>
+                        <div className="col">
+                            <label for="select-protocolos">Selecione o Teste</label>
+                            <select className="form-control" id="select-protocolos" onChange={this.onChangeSelectProtocoloValue}>
+                                {this.renderProtocoloOptions()}
+                            </select>    
+                        </div>
+                        <div className="col">
+                            <button type="button" className="btn btn-primary w-75 p-2 mt-4" id="gerar" onClick={this.handleSubmit}>Gerar Gráfico</button>
+                        </div>
+                    </div>
+                    {this.state.grafico && <Chart className="my-4 w-100" values={this.state.data} protocolo={this.state.protocoloID}  />}
                 </div>
-                <div className="d-flex row justify-content-around flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-2 mb-md-0">
-                    <div className="col">
-                        <label for="select-atletas">Selecione o Atleta</label>
-                        <select className="form-control"  id="select-atleta" onChange={this.onChangeSelectAtletaValue}>
-                            {this.renderAtletaOptions()}
-                        </select>
-                    </div>
-                    <div className="col">
-                        <label for="select-protocolos">Selecione o Teste</label>
-                        <select className="form-control" id="select-protocolos" onChange={this.onChangeSelectProtocoloValue}>
-                            {this.renderProtocoloOptions()}
-                        </select>    
-                    </div>
-                    <div className="col">
-                        <button type="button" className="btn btn-primary w-75 p-2 mt-4" id="gerar" onClick={this.handleSubmit}>Gerar Gráfico</button>
-                    </div>
-                </div>
-                {this.state.grafico && <Chart className="my-4 w-100" values={this.state.data} protocolo={this.state.protocoloID}  />}
             </div>
+            
         );
     };
 }
