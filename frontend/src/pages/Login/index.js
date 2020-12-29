@@ -2,7 +2,7 @@ import React, {Component} from  'react';
 
 import ait from '../../assets/AIT.png'
 
-import './styles.css';
+import './login.css';
 
 class Login extends Component {
     render() {

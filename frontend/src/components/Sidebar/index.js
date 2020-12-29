@@ -10,36 +10,36 @@ class Sidebar extends Component {
                 <div className="sidebar-sticky pt-3">
                     <ul className="nav flex-column">
                         <li className="nav-item">
-                            <Link className="nav-link pt-5" to="/home">
+                            <Link className="nav-link pt-3" to="/home">
                                 <span data-feather="home"></span>
                                 Home <span class="sr-only">(current)</span>
                             </Link>
                         </li>
-                        <li className="nav-item pt-5">
+                        <li className="nav-item pt-3">
                             <a className="nav-link" href="#">
                                 <span data-feather="file"></span>
                                 Aplicar Teste   
                             </a>
                         </li>
-                        <li className="nav-item pt-5">
+                        <li className="nav-item pt-3">
                             <Link className="nav-link" to="/evolution">
                                 <span data-feather="shopping-cart"></span>
                                 Desempenho
                             </Link>
                         </li>
-                        <li className="nav-item pt-5">
+                        <li className="nav-item pt-3">
                             <a className="nav-link" href="#">
                                 <span data-feather="users"></span>
                                 Gerenciar Testes
                             </a>
                         </li>
-                        <li className="nav-item pt-5">
+                        <li className="nav-item pt-3">
                             <a className="nav-link" href="#">
                                 <span data-feather="bar-chart-2"></span>
                                 Gerenciar Atletas/Adm
                             </a>
                         </li>
-                        <li className="nav-item pt-5">
+                        <li className="nav-item pt-3">
                             <a className="nav-link" href="#">
                                 <span data-feather="layers"></span>
                                 Logout

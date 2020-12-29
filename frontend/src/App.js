@@ -4,9 +4,9 @@ import Routes from './routes';
 
 /*import Evolution from './pages/Evolution';
 import Sidebar from './components/Sidebar';
-import Navbar from './components/Navbar';
+import Navbar from './components/Navbar';*/
 
-import './styles.css';*/
+import './styles.css';
 
 function App() {
   return (
