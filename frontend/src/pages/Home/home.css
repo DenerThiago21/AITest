@@ -1,0 +1,19 @@
+#div-button {
+    background-color: lightgrey;
+    width: 300px;
+    height: 180px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.content {
+    text-align: center;
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;  
+}
+
+.bt-click {
+    display: flex;
+}
