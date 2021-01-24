@@ -20,6 +20,9 @@ router.get('/protocolos/', protocoloController.listarTodosProtocolos);
 
 /**rota para trazer a avaliação individual para cada atleta */
 router.get('/avaliacao/individual/:atletaID/:protocoloID', avaliacaoController.listarAvaliacaoProtocoloAtleta);
+/**Rota para trazer todas as avaliações */
 router.get('/avaliacao', avaliacaoController.listarTodasAvaliaoes);
+/**Rota para Trazer as ultimas avaliações feitas pelos atletas */
+router.get('/ultimas_avaliacoes', avaliacaoController.listarAvaliacaoPorData);
 
 module.exports = router
