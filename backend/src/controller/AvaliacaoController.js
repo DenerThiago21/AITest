@@ -34,13 +34,15 @@ class AvaliacaoController {
     }
 
     /**Função para retornar as avaliações com data mais recente
-     * select ta.atletaID, ta.protocoloID, ta.score, ta.dataAvaliacao from tcc.tb_avaliacao as ta
-        inner join (select atletaID, protocoloID, max(dataAvaliacao) as ultimaData from tcc.tb_avaliacao group by atletaID, protocoloID ) as ta2
-        on ta.atletaID = ta2.atletaID and ta.protocoloID = ta2.protocoloID and ta.dataAvaliacao = ta2.ultimaData
-        order by ta.atletaID 
+        select ta.atletaID, ta.protocoloID, tp.nome as nome_protocolo, ta.score, ta.dataAvaliacao from tcc.tb_avaliacao as ta
+	        inner join (select atletaID, protocoloID, max(dataAvaliacao) as ultimaData from tcc.tb_avaliacao group by atletaID, protocoloID ) as ta2
+		    on ta.atletaID = ta2.atletaID and ta.protocoloID = ta2.protocoloID and ta.dataAvaliacao = ta2.ultimaData
+		    inner join tcc.tb_protocolo tp
+		        on ta.protocoloID = tp.protocoloID 
+        order by ta.atletaID
      */
     listarAvaliacaoPorData (request, response) {
-        database.select('ta.atletaID', 'ta.protocoloID', 'ta.score', 'ta.dataAvaliacao').table({ ta: 'tb_avaliacao' })
+        database.select('ta.atletaID', 'ta.protocoloID', { Nome_Protocolo: 'tp.nome'}, 'ta.score', 'ta.dataAvaliacao').table({ ta: 'tb_avaliacao' })
             .innerJoin(database.select('atletaID', 'protocoloID').max({ ultimaData: 'dataAvaliacao' }).table('tb_avaliacao').groupBy('atletaID', 'protocoloID').as('ta2'),
                    function(){
                        this.on('ta.atletaID', '=', 'ta2.atletaID')
@@ -48,6 +50,7 @@ class AvaliacaoController {
                             .andOn('ta.dataAvaliacao', '=', 'ta2.ultimaData')  
                    } 
                 )
+            .innerJoin({ tp: 'tb_protocolo' }, 'ta.protocoloID', '=', 'tp.protocoloID')
             .orderBy('ta.atletaID').then(avalicaoUltimaData=>{
                 response.json(avalicaoUltimaData);
             }).catch(err=>{
