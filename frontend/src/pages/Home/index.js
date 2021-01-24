@@ -30,7 +30,7 @@ class Home extends Component {
                                     </Link>
                                 </div>
                                 <div id="div-button">
-                                    <Link className="m-3" to="/atletes" style={{ textDecoration: 'none', color: 'black' }}>
+                                    <Link className="m-3" to="/evolution" style={{ textDecoration: 'none', color: 'black' }}>
                                         <h5 className="m-5 h5">
                                             <img src={desempenho} alt="" width="32" height="32" align="left" />
                                             Desempenho

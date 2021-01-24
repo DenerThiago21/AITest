@@ -10,6 +10,8 @@ const avaliacaoController = require('../controller/avaliacaoController');
 router.post('/atletas/novo-atleta', atletaController.inserirAtleta);
 /**rota para trazer todos os atletas no bando de dados */
 router.get('/atletas/', atletaController.listarTodosAtletas);
+/**rota para trazer o total de atletas do banco de dados */
+router.get('/total_atletas', atletaController.totalAtletas);
 
 
 

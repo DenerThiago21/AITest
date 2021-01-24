@@ -25,6 +25,15 @@ class AtletaController {
         })
     };
 
+    /**Função para contar o total de atletas na base de dados (select count(atletaID) as total_atletas from tcc.tb_atleta) */
+    totalAtletas(request, response) {
+        database('tb_atleta').count('atletaID', {as: 'totalAtletas'}).then(total=>{
+            response.json(total);
+        }).catch(err=>{
+            console.log(err);
+        })
+    }
+
 }
 
 module.exports = new AtletaController();
