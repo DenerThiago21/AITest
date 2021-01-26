@@ -25,4 +25,9 @@ router.get('/avaliacao', avaliacaoController.listarTodasAvaliaoes);
 /**Rota para Trazer as ultimas avaliações feitas pelos atletas */
 router.get('/ultimas_avaliacoes', avaliacaoController.listarAvaliacaoPorData);
 
+/**Rota para exevutar a StoredProcedure */
+router.get('/sp', avaliacaoController.executaSP);
+/**rota para trazer dados utilizados na geração do gráfico geral de atletas */
+router.get('/lista', avaliacaoController.listaGeraAtleta);
+
 module.exports = router

@@ -57,6 +57,22 @@ class AvaliacaoController {
                 console.log(err);
             })
     }
+    listaGeraAtleta(request, response) {       
+        database.select('*').table('tb_generealevolutiuon').then(totalTests=>{
+            console.log(totalTests);
+            response.json(totalTests);
+        }).catch(err=>{
+            console.log(err);
+        })        
+    }
+    executaSP(request, response) {
+        database.raw('call SP_Evolucao_Geral()').then(result=>{
+            console.log(result)
+            response.json('result')
+        }).catch(err=>{
+            callback(err);
+        }); 
+    }
 }
 
 module.exports = new AvaliacaoController();
