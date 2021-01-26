@@ -5,8 +5,6 @@ class RullerChart extends Component {
     mostraValores(data) {
 
         const { valores } = data;
-        const radius = 10;
-
         return (
             <g>
                 <text fill="#fff" textAnchor="middle" dominantBaseline="middle">
