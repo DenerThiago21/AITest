@@ -24,7 +24,13 @@ class Sidebar extends Component {
                         <li className="nav-item pt-3">
                             <Link className="nav-link" to="/evolution">
                                 <span data-feather="shopping-cart"></span>
-                                Desempenho
+                                Desempenho Individual
+                            </Link>
+                        </li>
+                        <li className="nav-item pt-3">
+                            <Link className="nav-link" to="/general-evolution">
+                                <span data-feather="shopping-cart"></span>
+                                Desempenho Geral dos Atletas
                             </Link>
                         </li>
                         <li className="nav-item pt-3">
