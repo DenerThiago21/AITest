@@ -68,7 +68,7 @@ class AvaliacaoController {
     executaSP(request, response) {
         database.raw('call SP_Evolucao_Geral()').then(result=>{
             console.log(result)
-            response.json('result')
+            response.json(true)
         }).catch(err=>{
             callback(err);
         }); 
