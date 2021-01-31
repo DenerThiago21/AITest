@@ -15,6 +15,17 @@ class AtletaController {
         })
     };
 
+    /**Função para atualizar o registro de um atleta no banco de dados */
+    updateAtleta(request, response) {
+        const {nome, cpf, graduacao, peso, senha} = request.body;
+        const { id } = request.params;
+        database('tb_atleta').update({ nome, cpf, graduacao, peso, senha }).where({'atletaID': id}).then(updated=>{
+            response.json();
+        }).catch(err=>{
+            console.log(err);
+        })
+    }
+
     /**Função para buscar todos os atletas na base (SELECT * FROM tb_atletas) */
     listarTodosAtletas(request, response) {
         database.select('*').table('tb_atleta').then(atletas=>{
@@ -34,7 +45,14 @@ class AtletaController {
         })
     }
 
+    /**Função para deletar atleta do banco de dados pelo ID do atleta */
     deleteAtleta(request, response) {
+        const { id } = request.params;
+        database('tb_atleta').where({ 'atletaID': id }).del().then(deleted=>{
+            response.json(deleted);
+        }).catch(err=>{
+            console.log(err);
+        })
         //teste
     }
 
