@@ -34,6 +34,10 @@ class AtletaController {
         })
     }
 
+    deletarAtleta(request, response) {
+        
+    }
+
 }
 
 module.exports = new AtletaController();
