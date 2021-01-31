@@ -36,6 +36,17 @@ class AtletaController {
         })
     };
 
+    /**Função para listar alguns campos da tabela atleta */
+    listarTableAtletas(request, response) {
+        database.select('atletaID as ID', 'nome', (database.raw('year(from_days(to_days(now())-to_days(dataNasc))) as idade')), 'peso', 'graduacao')
+                .table('tb_atleta')
+                .then(atletas=> {
+                    response.json(atletas);
+                }).catch(err=>{
+                    console.log(err);
+                })
+    }
+
     /**Função para contar o total de atletas na base de dados (select count(atletaID) as total_atletas from tcc.tb_atleta) */
     totalAtletas(request, response) {
         database('tb_atleta').count('atletaID', {as: 'totalAtletas'}).then(total=>{
