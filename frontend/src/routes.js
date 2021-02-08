@@ -7,6 +7,8 @@ import Login from './pages/Login';
 import NewAtlete from './pages/NewAtlete';
 import GeneralEvolution from  './pages/GeneralEvolution';
 import Atletes from './pages/Atletes';
+import Taf from './pages/taf';
+import WellsTaf from './pages/taf/WellsTaf';
 
 export default function Routes() {
     return(
@@ -18,6 +20,9 @@ export default function Routes() {
                 <Route path='/general-evolution' exact component={GeneralEvolution} />
                 <Route path='/atletes' exact component={Atletes} />
                 <Route path='/atletes/new-atlete' exact component={NewAtlete} />
+                <Route path='/taf' exact component={Taf} />
+                <Route path='/wells-taf' exact component={WellsTaf} />
+
             </Switch>
         </BrowserRouter>
     );
