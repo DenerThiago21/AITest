@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import ReactPlayer from 'react-player/youtube';
 import Navbar from '../../components/Navbar';
 import Sidebar from '../../components/Sidebar';
+import Player from '../../components/Player';
 
 import SelectProtocols from '../../components/SelectProtocols';
 
@@ -42,13 +43,13 @@ class Taf extends Component {
                         </div>
                     </div>
                     <div className="d-flex row justify-content-around flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-2 mb-md-0" >
-                        <div className="col">
+                        <div className="col-sm-6 col-md-6 col-lg-6 col-xl-6">
                             <label for="textarea">Descrição do Teste</label>
                             <textarea className="form-control" id="textarea" rows="14"></textarea>
                         </div>
-                        <div className="col">
+                        <div className="col-sm-6 col-md-6 col-lg-6 col-xl-6">
                             <label for="video">Vídeo Demonstrativo</label>
-                            <ReactPlayer className="h-60" url="https://www.youtube.com/watch?v=mKZJLpdnALg" height="300px" width="530px" id="video"/>
+                            <Player url="https://www.youtube.com/watch?v=mKZJLpdnALg" id="video"/>
                         </div>
                     </div>
                     <div className="d-flex row justify-content-around flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-2 mb-md-0" >
