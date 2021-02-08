@@ -8,6 +8,7 @@ import Player from '../../components/Player';
 import SelectProtocols from '../../components/SelectProtocols';
 
 let gProtocoloID = 1;
+let gUrl = "https://www.youtube.com/watch?v=mKZJLpdnALg";
 
 class Taf extends Component {
     constructor(props){
@@ -24,7 +25,25 @@ class Taf extends Component {
         gProtocoloID = event.target.value;
         this.setState({ protocoloID: gProtocoloID });
         //console.log(this.state.protocoloID);
+        if(gProtocoloID === "1") {
+            gUrl = "https://www.youtube.com/watch?v=mKZJLpdnALg";
+        } else if (gProtocoloID === "2") {
+            gUrl = "https://www.youtube.com/watch?v=f7JWDLFhR_c";
+        } else if (gProtocoloID === "3"){
+            gUrl = "https://www.youtube.com/watch?v=HEaIsKm-pao";
+        } else if (gProtocoloID === "4"){
+            gUrl = "https://www.youtube.com/watch?v=8jLfTDn3_TM";
+        } else if (gProtocoloID === "5"){
+            gUrl = "https://www.youtube.com/watch?v=K8Q4fTvEVSU";
+        } else if (gProtocoloID === "6"){
+            gUrl = "https://www.youtube.com/watch?v=Af034Lmof58";
+        } else if (gProtocoloID === "7"){
+            gUrl = "https://www.youtube.com/watch?v=_fsjNfffknA";
+        } else if (gProtocoloID === "8"){
+            gUrl = "https://www.youtube.com/watch?v=0vbuGMlwKl8";
+        } 
         console.log(gProtocoloID);
+        console.log(gUrl)
     }
 
 
@@ -49,7 +68,7 @@ class Taf extends Component {
                         </div>
                         <div className="col-sm-6 col-md-6 col-lg-6 col-xl-6">
                             <label for="video">Vídeo Demonstrativo</label>
-                            <Player url="https://www.youtube.com/watch?v=mKZJLpdnALg" id="video"/>
+                            <Player url={gUrl} id="video"/>
                         </div>
                     </div>
                     <div className="d-flex row justify-content-around flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-2 mb-md-0" >
