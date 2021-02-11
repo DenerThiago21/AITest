@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import ReactPlayer from 'react-player/youtube';
+import api from '../../services/api';
+
 import Navbar from '../../components/Navbar';
 import Sidebar from '../../components/Sidebar';
 import Player from '../../components/Player';
@@ -8,42 +9,40 @@ import Player from '../../components/Player';
 import SelectProtocols from '../../components/SelectProtocols';
 
 let gProtocoloID = 1;
-let gUrl = "https://www.youtube.com/watch?v=mKZJLpdnALg";
+//let gUrl = "https://www.youtube.com/watch?v=mKZJLpdnALg";
+
 
 class Taf extends Component {
     constructor(props){
         super(props);
         this.state = { 
-            protocols: [],
+            descricao: "",
+            url: "",
+            testes: "",
             protocoloID: gProtocoloID,
         };
         
         this.onChangeSelectProtocolValue = this.onChangeSelectProtocolValue.bind(this);
     }
 
+    componentDidMount() {
+        this.loadProtocolID(gProtocoloID);
+    }
+
+    loadProtocolID = async (id) => {
+        const response = await api.get('/protocolos/'+id);
+        //console.log(response.data[0].urlVideo);
+        this.setState({ descricao: response.data[0].descricao });
+        this.setState({ url: response.data[0].urlVideo });
+    }
+
     onChangeSelectProtocolValue(event) {
         gProtocoloID = event.target.value;
         this.setState({ protocoloID: gProtocoloID });
+        this.loadProtocolID(gProtocoloID);
         //console.log(this.state.protocoloID);
-        if(gProtocoloID === "1") {
-            gUrl = "https://www.youtube.com/watch?v=mKZJLpdnALg";
-        } else if (gProtocoloID === "2") {
-            gUrl = "https://www.youtube.com/watch?v=f7JWDLFhR_c";
-        } else if (gProtocoloID === "3"){
-            gUrl = "https://www.youtube.com/watch?v=HEaIsKm-pao";
-        } else if (gProtocoloID === "4"){
-            gUrl = "https://www.youtube.com/watch?v=8jLfTDn3_TM";
-        } else if (gProtocoloID === "5"){
-            gUrl = "https://www.youtube.com/watch?v=K8Q4fTvEVSU";
-        } else if (gProtocoloID === "6"){
-            gUrl = "https://www.youtube.com/watch?v=Af034Lmof58";
-        } else if (gProtocoloID === "7"){
-            gUrl = "https://www.youtube.com/watch?v=_fsjNfffknA";
-        } else if (gProtocoloID === "8"){
-            gUrl = "https://www.youtube.com/watch?v=0vbuGMlwKl8";
-        } 
-        console.log(gProtocoloID);
-        console.log(gUrl)
+        //console.log(gProtocoloID);
+        //console.log(gUrl)
     }
 
 
@@ -62,13 +61,13 @@ class Taf extends Component {
                         </div>
                     </div>
                     <div className="d-flex row justify-content-around flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-2 mb-md-0" >
-                        <div className="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                        <div className="col-sm-3 col-md-3 col-lg-6 col-xl-6">
                             <label for="textarea">Descrição do Teste</label>
-                            <textarea className="form-control" id="textarea" rows="14"></textarea>
+                            <textarea className="form-control" id="textarea" rows="14" value={this.state.descricao} disabled />
                         </div>
-                        <div className="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                        <div className="col-sm-9 col-md-9 col-lg-6 col-xl-6">
                             <label for="video">Vídeo Demonstrativo</label>
-                            <Player url={gUrl} id="video"/>
+                            <Player url={this.state.url} id="video"/>
                         </div>
                     </div>
                     <div className="d-flex row justify-content-around flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-2 mb-md-0" >

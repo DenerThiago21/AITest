@@ -10,6 +10,15 @@ class ProtocoloController {
             console.log(err);
         })
     }
+    /**Função para retornar teste pelo ID selecionado */
+    listarProtocoloID (request, response) {
+        const {id} = request.params;
+        database('tb_protocolo').where({ 'protocoloID': id }).then(protocolo=>{
+            response.json(protocolo);
+        }).catch(err=>{
+            console.log(err);
+        })
+    }
 }
 
 module.exports = new ProtocoloController()

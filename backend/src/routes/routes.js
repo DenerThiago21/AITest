@@ -23,6 +23,8 @@ router.get('/total_atletas', atletaController.totalAtletas);
 
 /**rota para trazer todos os protocolos de teste do banco de dados */
 router.get('/protocolos/', protocoloController.listarTodosProtocolos);
+/**rota para trazer o protocolo de acordo com o ID */
+router.get('/protocolos/:id', protocoloController.listarProtocoloID);
 
 /**rota para trazer a avaliação individual para cada atleta */
 router.get('/avaliacao/individual/:atletaID/:protocoloID', avaliacaoController.listarAvaliacaoProtocoloAtleta);
