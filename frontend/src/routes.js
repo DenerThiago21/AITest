@@ -9,6 +9,7 @@ import GeneralEvolution from  './pages/GeneralEvolution';
 import Atletes from './pages/Atletes';
 import Taf from './pages/taf';
 import WellsTaf from './pages/taf/WellsTaf';
+import HexagonoTaf from './pages/taf/HexagonoTaf';
 
 export default function Routes() {
     return(
@@ -22,6 +23,7 @@ export default function Routes() {
                 <Route path='/atletes/new-atlete' exact component={NewAtlete} />
                 <Route path='/taf' exact component={Taf} />
                 <Route path='/wells-taf' exact component={WellsTaf} />
+                <Route path='/hexagono-taf' exact component={HexagonoTaf} />
 
             </Switch>
         </BrowserRouter>

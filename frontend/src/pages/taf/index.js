@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import api from '../../services/api';
 
@@ -45,6 +46,18 @@ class Taf extends Component {
         //console.log(gUrl)
     }
 
+    routerLink(id) {
+        let protocolID = parseInt(id);
+
+        switch(protocolID) {
+            case 1: 
+                return '/wells-taf';
+            case 2: 
+                return '/hexagono-taf';
+            default:
+                break;
+        }
+    }
 
     render() {
         return (
@@ -72,7 +85,13 @@ class Taf extends Component {
                     </div>
                     <div className="d-flex row justify-content-around flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-2 mb-md-0" >
                         <div className="col">
-                        <button type="button" className="btn btn-primary w-45 p-2 ml-2 mt-4">Avançar</button>
+                            <Link className="btn btn-primary w-45 p-2 ml-2 mt-4" to={this.routerLink(this.state.protocoloID)}>
+                                Avançar
+                            </Link>
+                            {/*
+                                <button type="button" className="btn btn-primary w-45 p-2 ml-2 mt-4">Avançar</button>
+                            */}
+                            
                         </div>
                     </div>
                 </div>

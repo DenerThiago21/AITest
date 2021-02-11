@@ -16,7 +16,7 @@ class Sidebar extends Component {
                             </Link>
                         </li>
                         <li className="nav-item pt-3">
-                            <a className="nav-link" href="#">
+                            <a className="nav-link" href="/taf">
                                 <span data-feather="file"></span>
                                 Aplicar Teste   
                             </a>
