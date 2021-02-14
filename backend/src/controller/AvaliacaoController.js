@@ -76,8 +76,8 @@ class AvaliacaoController {
 
     /**Gravando os testes feitos(podendo ser mais de um) */
     aplicaTeste(request, response) {
-        const req = request.body
-        console.log(req);
+        const req = request.body;
+        //console.log(protocoloID);
 
         database('tb_avaliacao').insert(req).then(create=>{
             console.log(create);

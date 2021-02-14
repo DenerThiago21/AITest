@@ -38,24 +38,33 @@ class HexagonoTaf extends Component {
         this.setState({ atletaID: gAtleta});
     }
 
-    handleSubmit(event) {
+    async handleSubmit(event) {
         let data = [];
 
         let sel = document.getElementsByClassName('Select');
-        let ciclo1 = document.getElementsByClassName('ciclo1');
-        let ciclo2 = document.getElementsByClassName('ciclo2');
-        let ciclo3 = document.getElementsByClassName('ciclo3');
-
+        let teste1 = document.getElementsByClassName('teste1');
+        let teste2 = document.getElementsByClassName('teste2');
     
-
         const now = new Date();
         const dataAvaliacao = format(now, 'yyyy-MM-dd');
 
-        for(let i = 0; i < sel.length; i++){
+        for(let i = 0; i<sel.length; i++){
             let val = sel[i].children[1];
+            let valores = (parseFloat(teste1[i].value)+parseFloat(teste2[i].value))/2;
             data[i] = {
-
-            }
+                'atletaID': parseInt(val.options[val.selectedIndex].value),
+                'protocoloID': 2,
+                'dataAvaliacao':  dataAvaliacao,
+                'valores': valores,
+                
+            };
+        }
+        //console.log(data);
+        try {
+            await api.post('/avaliacao/aplicar', data);
+            alert('Gravado com Sucesso!!!');
+        } catch(err) {
+            console.log(err);
         }
     }
 
@@ -75,23 +84,19 @@ class HexagonoTaf extends Component {
                             <SelectAtleta handleAtlID={this.onChangeSelectAtletaValue} />
                         </div>
                         <div className="col">
-                            <label for="ciclo1">Ciclo 1</label>
-                            <input className="form-control input" type="time" id="ciclo1" /> 
+                            <label for="t1">Teste 1 - segundos</label>
+                            <input className="form-control teste1" type="number" step="0.01" id="t1" /> 
                         </div>
                         <div className="col">
-                            <label for="ciclo2">Ciclo 2</label>
-                            <input className="form-control input" type="text" id="ciclo2" /> 
-                        </div>
-                        <div className="col">
-                            <label for="ciclo3">Ciclo 3</label>
-                            <input className="form-control input" type="text" id="ciclo3" />
+                            <label for="t2">Teste 2 - segundos</label>
+                            <input className="form-control teste2" type="number" step="0.01" id="t2" /> 
                         </div>
                     </div>
                     {atletas}
                     <form className="d-flex row justify-content-around flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-2 mb-md-0" onSubmit={this.handleSubmit} > 
                         <div className="col">
                             <button type="button" className="btn btn-primary w-45 p-2 mt-4" onClick={this.handleAddAtleta}>Add</button>
-                            <button type="submit" className="btn btn-primary w-45 p-2 ml-2 mt-4">Gravar</button>
+                            <button type="submit" className="btn btn-primary w-45 p-2 ml-2 mt-4" >Gravar</button>
                         </div>
                     </form >
                 </div>

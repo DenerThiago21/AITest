@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
+
 import SelectAtleta from '../../SelectAtleta';
 
-class TesteHexagono extends Component {
+class TesteLeger extends Component {
     constructor(props) {
         super(props);
     }
 
-    render(){
+    render() {
         const teste = this.props.teste;
         return (
             <div className="d-flex row justify-content-around flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-2 mb-md-0" defaultValue={teste.nome}>
@@ -14,16 +15,14 @@ class TesteHexagono extends Component {
                     <SelectAtleta handleAtlID={this.props.HandleAtleta} />
                 </div>
                 <div className="col">
-                    <label for="t1">Teste 1 - segundos</label>
-                    <input className="form-control teste1" type="number" step="0.01" id="t1" /> 
-                </div>
-                <div className="col">
-                    <label for="t2">Teste 2 - segundos</label>
-                    <input className="form-control teste2" type="number" step="0.01" id="t2" /> 
+                    <div className="label-valor">
+                        <label for="valor">Valor em número de voltas</label>
+                        <input className="form-control input" type="text" id="valor" /> 
+                    </div>
                 </div>
             </div>
         );
     }
 }
 
-export default TesteHexagono;
+export default TesteLeger;

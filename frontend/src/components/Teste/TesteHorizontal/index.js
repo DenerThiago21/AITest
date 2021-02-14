@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import SelectAtleta from '../../SelectAtleta';
+import SelectAtleta from '../../../components/SelectAtleta';
 
-class TesteHexagono extends Component {
+class TesteHorizontal extends Component {
     constructor(props) {
         super(props);
     }
@@ -14,16 +14,12 @@ class TesteHexagono extends Component {
                     <SelectAtleta handleAtlID={this.props.HandleAtleta} />
                 </div>
                 <div className="col">
-                    <label for="t1">Teste 1 - segundos</label>
-                    <input className="form-control teste1" type="number" step="0.01" id="t1" /> 
-                </div>
-                <div className="col">
-                    <label for="t2">Teste 2 - segundos</label>
-                    <input className="form-control teste2" type="number" step="0.01" id="t2" /> 
+                    <label for="valor">Valor em centímetros</label>
+                    <input className="form-control input" type="number" step="1" id="valor" /> 
                 </div>
             </div>
         );
     }
 }
 
-export default TesteHexagono;
+export default TesteHorizontal;

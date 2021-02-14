@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import SelectAtleta from '../../SelectAtleta';
+import SelectAtleta from '../../../components/SelectAtleta';
 
-class TesteHexagono extends Component {
+class TesteFSKT extends Component {
     constructor(props) {
         super(props);
     }
@@ -14,16 +14,16 @@ class TesteHexagono extends Component {
                     <SelectAtleta handleAtlID={this.props.HandleAtleta} />
                 </div>
                 <div className="col">
-                    <label for="t1">Teste 1 - segundos</label>
-                    <input className="form-control teste1" type="number" step="0.01" id="t1" /> 
+                    <label for="direita">Qtd Chutes perna Direita</label>
+                    <input className="form-control dir" type="number" step="1" id="direita" /> 
                 </div>
                 <div className="col">
-                    <label for="t2">Teste 2 - segundos</label>
-                    <input className="form-control teste2" type="number" step="0.01" id="t2" /> 
+                    <label for="esquerda">Qtd Chutes perna Esquerda</label>
+                    <input className="form-control esq" type="number" step="1" id="esquerda" /> 
                 </div>
             </div>
         );
     }
 }
 
-export default TesteHexagono;
+export default TesteFSKT;
