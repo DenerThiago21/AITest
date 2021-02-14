@@ -54,6 +54,18 @@ class Taf extends Component {
                 return '/wells-taf';
             case 2: 
                 return '/hexagono-taf';
+            case 3:
+                return '/cegonha-taf';
+            case 4: 
+                return '/ruller-taf';
+            case 5:
+                return '/leger-taf';
+            case 6:
+                return '/abs-taf';
+            case 7:
+                return '/horizontal-taf';
+            case 8:
+                return '/fskt-taf';
             default:
                 break;
         }

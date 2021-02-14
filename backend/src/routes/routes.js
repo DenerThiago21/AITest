@@ -32,6 +32,8 @@ router.get('/avaliacao/individual/:atletaID/:protocoloID', avaliacaoController.l
 router.get('/avaliacao', avaliacaoController.listarTodasAvaliaoes);
 /**Rota para Trazer as ultimas avaliações feitas pelos atletas */
 router.get('/ultimas_avaliacoes', avaliacaoController.listarAvaliacaoPorData);
+/**Rota para aplicação das avaliações - gravação no banco de dados */
+router.post('/avaliacao/aplicar', avaliacaoController.aplicaTeste);
 
 /**Rota para exevutar a StoredProcedure */
 router.get('/sp', avaliacaoController.executaSP);
