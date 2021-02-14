@@ -95,7 +95,7 @@ class LegerTaf extends Component {
                         <div className="col">
                             <div className="label-valor">
                                 <label for="valor">Valor em número de voltas</label>
-                                <input className="form-control input" type="text" id="valor" /> 
+                                <input className="form-control input" type="number" step="1" id="valor" /> 
                             </div>
                         </div>
                     </div>
