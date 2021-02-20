@@ -34,10 +34,10 @@ class Sidebar extends Component {
                             </Link>
                         </li>
                         <li className="nav-item pt-3">
-                            <a className="nav-link" href="#">
+                            <Link className="nav-link" href="/">
                                 <span data-feather="users"></span>
                                 Gerenciar Testes
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item pt-3">
                             <Link className="nav-link" to="/atletes">
@@ -46,10 +46,10 @@ class Sidebar extends Component {
                             </Link>
                         </li>
                         <li className="nav-item pt-3">
-                            <a className="nav-link" href="#">
+                            <Link className="nav-link" href="/">
                                 <span data-feather="layers"></span>
                                 Logout
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                 </div>
