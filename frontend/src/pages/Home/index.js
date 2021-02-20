@@ -22,7 +22,7 @@ class Home extends Component {
                         <div className="container">
                             <div className="row">
                                 <div id="div-button">
-                                    <Link className="m-3" to="/atletes" style={{ textDecoration: 'none', color: 'black' }}>
+                                    <Link className="m-3" to="/taf" style={{ textDecoration: 'none', color: 'black' }}>
                                         <h5 className="m-5 h5">
                                             <img src={tkdimg} alt="" width="32" height="32" align="left" /> 
                                             Aplicar Teste
