@@ -1,8 +1,14 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import {logout} from '../../services/auth';
 import './styles.css';
 
 class Sidebar extends Component {
+    
+    async handleLogout(e) {
+        logout();
+    }
+
 
     render() {
         return (
@@ -46,7 +52,7 @@ class Sidebar extends Component {
                             </Link>
                         </li>
                         <li className="nav-item pt-3">
-                            <Link className="nav-link" href="/">
+                            <Link className="nav-link" onClick={this.handleLogout} to="/">
                                 <span data-feather="layers"></span>
                                 Logout
                             </Link>
