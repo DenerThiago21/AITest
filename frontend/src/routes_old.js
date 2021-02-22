@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Evolution from './pages/Evolution';
 import Home from './pages/Home';
@@ -17,6 +17,8 @@ import FsktTaf from './pages/taf/FsktTaf';
 import HorizontalTaf from './pages/taf/HorizontalTaf';
 import LegerTaf from './pages/taf/LegerTaf';
 import RullerTaf from './pages/taf/RullerTaf';
+
+
 
 
 export default function Routes() {
