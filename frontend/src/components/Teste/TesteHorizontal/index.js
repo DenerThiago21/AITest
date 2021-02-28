@@ -14,9 +14,23 @@ class TesteHorizontal extends Component {
                     <SelectAtleta handleAtlID={this.props.HandleAtleta} />
                 </div>
                 <div className="col">
-                    <label for="valor">Valor em centímetros</label>
-                    <input className="form-control input" type="number" step="1" id="valor" /> 
+                    <div className="label-valor 1">
+                        <label for="valor">Valor em centímetros(tentativa 1)</label>
+                        <input className="form-control input" type="number" step="0.01" id="valor1" /> 
+                    </div>
                 </div>
+                <div className="col">
+                    <div className="label-valor 2">
+                        <label for="valor">Valor em centímetros(tentativa 2)</label>
+                        <input className="form-control input" type="number" step="0.01" id="valor2" /> 
+                    </div>
+                </div>
+                <div className="col">
+                    <div className="label-valor 3">
+                        <label for="valor">Valor em centímetros(tentativa 3)</label>
+                        <input className="form-control input" type="number" step="0.01" id="valor3" /> 
+                    </div>
+                </div>    
             </div>
         );
     }
