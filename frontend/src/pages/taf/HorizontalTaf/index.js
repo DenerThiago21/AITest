@@ -45,26 +45,37 @@ class HorizontalTaf extends Component {
         let data = [];
 
         let sel    = document.getElementsByClassName('Select');
-        let inputs = document.getElementsByClassName('input');
 
+        let input = document.getElementsByClassName('input');
+      
         const now = new Date();
         const dataAvaliacao = format(now, 'yyyy-MM-dd');
+        
+        let controlInputs = 0;
 
         for(let i = 0; i<sel.length; i++){
-            let val = sel[i].children[1];
+            let select = sel[i].children[1];
+            let maior = 0;
+            for(let j = 0; j < (controlInputs+3); j++ ) {
+                if(input[j].value > maior) {
+                    maior = parseFloat(input[j].value);
+                }
+            }
+
+            //console.log(maior);
             data[i] = {
-                'atletaID': parseInt(val.options[val.selectedIndex].value),
+                'atletaID': parseInt(select.options[select.selectedIndex].value),
                 'protocoloID': 7,
                 'dataAvaliacao':  dataAvaliacao,
-                'valores': parseFloat(inputs[i].value)
+                'valores': maior
                 
             };
+            controlInputs = controlInputs + 3;
         }
-        console.log(data);
+        //console.log(data);
 
         try {
             await api.post('/avaliacao/aplicar', data);
-            console.log('cheguei');
             alert('Gravado com Sucesso!!');
         } catch(err) {
             alert(err);
@@ -89,14 +100,26 @@ class HorizontalTaf extends Component {
                             <SelectAtleta handleAtlID={this.onChangeSelectAtletaValue} />
                         </div>
                         <div className="col">
-                            <div className="label-valor">
-                                <label for="valor">Valor em centímetros</label>
-                                <input className="form-control input" type="number" step="0.01" id="valor" /> 
+                            <div className="label-valor 1">
+                                <label for="valor">Valor em centímetros(tentativa 1)</label>
+                                <input className="form-control input" type="number" step="0.01" id="valor1" /> 
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="label-valor 2">
+                                <label for="valor">Valor em centímetros(tentativa 2)</label>
+                                <input className="form-control input" type="number" step="0.01" id="valor2" /> 
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="label-valor 3">
+                                <label for="valor">Valor em centímetros(tentativa 3)</label>
+                                <input className="form-control input" type="number" step="0.01" id="valor3" /> 
                             </div>
                         </div>
                     </div>
                     {atletas}
-                    <form className="d-flex row justify-content-around flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-2 mb-md-0" onSubmit={this.handleSubmit} > 
+                    <form className="d-flex row justify-content-around flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-2 mb-md-0" onSubmit={this.handleSubmit}> 
                         <div className="col">
                             <button type="button" className="btn btn-primary w-45 p-2 mt-4" onClick={this.handdleAddAtleta}>Add</button>
                             <button type="submit" className="btn btn-primary w-45 p-2 ml-2 mt-4">Gravar</button>
