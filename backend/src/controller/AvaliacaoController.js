@@ -16,7 +16,6 @@ class AvaliacaoController {
                     for(let i in avaliacaoProtocoloAtleta){
                         avaliacaoProtocoloAtleta[i].dataAvaliacao = format(avaliacaoProtocoloAtleta[i].dataAvaliacao, 'dd/MM/yyyy') ;
                     }
-                    console.log(avaliacaoProtocoloAtleta);
                     response.json(avaliacaoProtocoloAtleta);
                 }).catch(err => {
                     console.log(err);
@@ -26,7 +25,6 @@ class AvaliacaoController {
     /**Função que retornará todas as avalações feitas, (somente para testes interos) */
     listarTodasAvaliaoes (request, response) {
         database.select('*').table('tb_avaliacao').then(avaliacoes=> {
-            console.log(avaliacoes);
             response.json(avaliacoes);
         }).catch(err=>{
             console.log(err);
@@ -59,7 +57,6 @@ class AvaliacaoController {
     }
     listaGeraAtleta(request, response) {       
         database.select('*').table('tb_generealevolutiuon').then(totalTests=>{
-            console.log(totalTests);
             response.json(totalTests);
         }).catch(err=>{
             console.log(err);
@@ -67,7 +64,6 @@ class AvaliacaoController {
     }
     executaSP(request, response) {
         database.raw('call SP_Evolucao_Geral()').then(result=>{
-            console.log(result)
             response.json(true)
         }).catch(err=>{
             callback(err);
@@ -80,7 +76,6 @@ class AvaliacaoController {
         //console.log(protocoloID);
 
         database('tb_avaliacao').insert(req).then(create=>{
-            console.log(create);
             response.status(201).send();
         }).catch(err=>{
             console.log(err);

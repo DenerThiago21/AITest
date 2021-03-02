@@ -3,10 +3,7 @@ import React, {Component} from 'react';
 import SelectAtleta from '../../SelectAtleta';
 
 class TesteRuller extends Component {
-    constructor(props) {
-        super(props);
-    }
-
+  
     render() {
         const teste = this.props.teste;
         return (

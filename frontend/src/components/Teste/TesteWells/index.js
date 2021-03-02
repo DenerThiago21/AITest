@@ -3,9 +3,6 @@ import React, {Component} from 'react';
 import SelectAtleta from '../../SelectAtleta';
 
 class TesteWells extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         const teste = this.props.teste;
