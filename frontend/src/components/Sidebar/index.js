@@ -48,7 +48,7 @@ class Sidebar extends Component {
                         <li className="nav-item pt-3">
                             <Link className="nav-link" to="/atletes">
                                 <span data-feather="bar-chart-2"></span>
-                                Gerenciar Atletas/Adm
+                                Gerenciar Atletas
                             </Link>
                         </li>
                         <li className="nav-item pt-3">

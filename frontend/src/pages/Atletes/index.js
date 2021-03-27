@@ -33,7 +33,7 @@ class Atletes extends Component {
                 <Sidebar />
                 <div role="main" className="col-md-9 ml-sm-auto col-lg-10 px-md-4">
                     <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
-                        <h2 className="h2">Table</h2>
+                        <h2 className="h2">Atletas</h2>
                     </div>
                     <div className="d-flex row justify-content-around flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-2 mb-md-0">
                         <Table data={this.state.values} />
