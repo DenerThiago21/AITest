@@ -54,12 +54,11 @@ class LegerTaf extends Component {
         for(let i = 0; i<sel.length; i++){
             let val = sel[i].children[1];
             let valores = parseInt(inputs[i].value);
-            let vo_max = 18.043461 + (0.3689295 * valores) + (-0.000349 * valores * valores);
             data[i] = {
                 'atletaID': parseInt(val.options[val.selectedIndex].value),
                 'protocoloID': 5,
                 'dataAvaliacao':  dataAvaliacao,
-                'valores': parseFloat(vo_max)
+                'valores': parseInt(valores)
                 
             };
         }
@@ -67,7 +66,7 @@ class LegerTaf extends Component {
 
         try {
             await api.post('/avaliacao/aplicar', data);
-            console.log('cheguei');
+            //console.log('cheguei');
             alert('Gravado com Sucesso!!');
         } catch(err) {
             alert(err);

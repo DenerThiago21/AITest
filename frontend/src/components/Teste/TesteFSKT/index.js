@@ -2,9 +2,6 @@ import React, {Component} from 'react';
 import SelectAtleta from '../../../components/SelectAtleta';
 
 class TesteFSKT extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render(){
         const teste = this.props.teste;

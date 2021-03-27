@@ -57,7 +57,7 @@ class Home extends Component {
                                     <Link className="m-3" to="/atletes" style={{ textDecoration: 'none', color: 'black' }}> 
                                         <h5 className="m-5 h5">
                                             <img src={atletaManagement} alt="" width="32" height="32" align="left" />
-                                            Gerenciar Atletas/Adm
+                                            Gerenciar Atletas
                                         </h5>
                                     </Link>
                                 </div>

@@ -2,10 +2,7 @@ import React, {Component} from 'react';
 import SelectAtleta from '../../SelectAtleta';
 
 class TesteCegonha extends Component {
-    constructor(props) {
-        super(props);
-    }
-
+ 
     render(){
         const teste = this.props.teste;
         return (
